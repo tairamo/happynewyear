@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<!-- saved from url=(0054)file:///Users/developer/Downloads/new-year-2026_1.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy New Year 2026 - Dev Edition</title>
+  <link href="./Happy New Year 2026 - Dev Edition_files/css2" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      background: #0d1117;
+      font-family: 'JetBrains Mono', monospace;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Matrix rain background */
+    .matrix-rain {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      opacity: 0.15;
+      z-index: 0;
+    }
+
+    .matrix-column {
+      position: absolute;
+      top: -100%;
+      font-size: 14px;
+      color: #00ff88;
+      animation: fall linear infinite;
+      text-shadow: 0 0 10px #00ff88;
+    }
+
+    @keyframes fall {
+      to { transform: translateY(200vh); }
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 40px;
+    }
+
+    /* IDE Window */
+    .ide-window {
+      background: #161b22;
+      border-radius: 12px;
+      box-shadow: 
+        0 0 0 1px #30363d,
+        0 25px 50px -12px rgba(0, 255, 136, 0.25),
+        0 0 100px rgba(0, 255, 136, 0.1);
+      overflow: hidden;
+      max-width: 700px;
+      animation: windowFloat 6s ease-in-out infinite;
+    }
+
+    @keyframes windowFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    /* Title bar */
+    .title-bar {
+      background: #21262d;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 1px solid #30363d;
+    }
+
+    .window-btn {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+
+    .btn-red { background: #ff5f56; }
+    .btn-yellow { background: #ffbd2e; }
+    .btn-green { background: #27c93f; }
+
+    .file-name {
+      margin-left: 12px;
+      color: #8b949e;
+      font-size: 13px;
+    }
+
+    /* Code area */
+    .code-area {
+      padding: 30px;
+      text-align: left;
+    }
+
+    .line {
+      display: flex;
+      margin: 8px 0;
+      opacity: 0;
+      animation: typeIn 0.5s ease forwards;
+    }
+
+    .line:nth-child(1) { animation-delay: 0.2s; }
+    .line:nth-child(2) { animation-delay: 0.4s; }
+    .line:nth-child(3) { animation-delay: 0.6s; }
+    .line:nth-child(4) { animation-delay: 0.8s; }
+    .line:nth-child(5) { animation-delay: 1s; }
+    .line:nth-child(6) { animation-delay: 1.2s; }
+    .line:nth-child(7) { animation-delay: 1.4s; }
+    .line:nth-child(8) { animation-delay: 1.6s; }
+    .line:nth-child(9) { animation-delay: 1.8s; }
+    .line:nth-child(10) { animation-delay: 2s; }
+    .line:nth-child(11) { animation-delay: 2.2s; }
+
+    @keyframes typeIn {
+      from { opacity: 0; transform: translateX(-10px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    .line-num {
+      color: #484f58;
+      width: 30px;
+      flex-shrink: 0;
+      user-select: none;
+    }
+
+    .code {
+      flex: 1;
+    }
+
+    /* Syntax highlighting */
+    .keyword { color: #ff7b72; }
+    .function { color: #d2a8ff; }
+    .string { color: #a5d6ff; }
+    .number { color: #79c0ff; }
+    .comment { color: #8b949e; font-style: italic; }
+    .variable { color: #ffa657; }
+    .operator { color: #ff7b72; }
+    .bracket { color: #8b949e; }
+
+    /* Giant year display */
+    .year-display {
+      margin-top: 40px;
+      position: relative;
+    }
+
+    .year-text {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 120px;
+      font-weight: 900;
+      background: linear-gradient(135deg, #00ff88 0%, #00d4ff 50%, #ff00ff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-shadow: none;
+      filter: drop-shadow(0 0 30px rgba(0, 255, 136, 0.5));
+      animation: yearPulse 2s ease-in-out infinite, glitch 5s infinite;
+      letter-spacing: 10px;
+    }
+
+    @keyframes yearPulse {
+      0%, 100% { filter: drop-shadow(0 0 30px rgba(0, 255, 136, 0.5)); }
+      50% { filter: drop-shadow(0 0 50px rgba(0, 212, 255, 0.8)); }
+    }
+
+    @keyframes glitch {
+      0%, 94%, 100% { transform: translate(0); }
+      95% { transform: translate(-2px, 1px); }
+      96% { transform: translate(2px, -1px); }
+      97% { transform: translate(-1px, -1px); }
+      98% { transform: translate(1px, 2px); }
+    }
+
+    .subtitle {
+      font-size: 18px;
+      color: #00ff88;
+      margin-top: 20px;
+      opacity: 0;
+      animation: fadeIn 1s ease forwards 2.5s;
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    /* Commit message style */
+    .commit-msg {
+      margin-top: 30px;
+      background: #21262d;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      padding: 16px 20px;
+      display: inline-block;
+      opacity: 0;
+      animation: fadeIn 1s ease forwards 3s;
+    }
+
+    .commit-hash {
+      color: #58a6ff;
+      font-size: 12px;
+    }
+
+    .commit-text {
+      color: #c9d1d9;
+      margin-top: 8px;
+      font-size: 14px;
+    }
+
+    .commit-text .emoji {
+      font-style: normal;
+    }
+
+    /* Floating particles */
+    .particle {
+      position: absolute;
+      font-size: 20px;
+      opacity: 0.6;
+      animation: float 10s infinite ease-in-out;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.6; }
+      50% { transform: translateY(-30px) rotate(180deg); opacity: 1; }
+    }
+
+    .particle:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
+    .particle:nth-child(2) { top: 20%; right: 15%; animation-delay: 2s; }
+    .particle:nth-child(3) { bottom: 30%; left: 5%; animation-delay: 4s; }
+    .particle:nth-child(4) { bottom: 20%; right: 10%; animation-delay: 1s; }
+    .particle:nth-child(5) { top: 40%; left: 3%; animation-delay: 3s; }
+  </style>
+</head>
+<body>
+  <!-- Matrix rain background -->
+  <div class="matrix-rain" id="matrix"><div class="matrix-column" style="left: 48.6327%; animation-duration: 14.1084s; animation-delay: 0.0490231s;">[<br>=<br>コ<br>#<br>ウ<br>シ<br>サ<br>&lt;<br>テ<br>タ<br>$<br>-<br>^<br>[<br>{<br>$<br>イ<br>ケ<br>*<br>@<br>ト<br>&lt;<br>キ<br>;<br>エ<br>チ<br>ア<br>ソ<br>ク<br>シ<br></div><div class="matrix-column" style="left: 88.3231%; animation-duration: 18.1721s; animation-delay: 2.52464s;">[<br>ケ<br>%<br>@<br>1<br>$<br>ツ<br>+<br>[<br>ト<br>;<br>\<br>&gt;<br>セ<br>[<br>ア<br>ツ<br>%<br>%<br>;<br>&amp;<br>ソ<br>ツ<br>1<br>%<br>ツ<br>ケ<br>ト<br>ケ<br>+<br></div><div class="matrix-column" style="left: 8.04754%; animation-duration: 18.6799s; animation-delay: 1.16428s;">ク<br>]<br>エ<br>ケ<br>@<br>ソ<br>&lt;<br>&lt;<br>+<br>&lt;<br>@<br>テ<br>;<br>セ<br>1<br>&lt;<br>オ<br>カ<br>ト<br>^<br>#<br>*<br>#<br>+<br>ス<br>[<br>ウ<br>エ<br>&lt;<br>イ<br></div><div class="matrix-column" style="left: 51.4159%; animation-duration: 16.9599s; animation-delay: 3.02718s;">ウ<br>]<br>チ<br>}<br>オ<br>!<br>タ<br>シ<br>#<br>!<br>キ<br>$<br>&lt;<br>エ<br>:<br>[<br>ウ<br>ウ<br>ツ<br>テ<br>キ<br>ア<br>ア<br>/<br>ス<br>#<br>チ<br>ソ<br>&lt;<br>;<br></div><div class="matrix-column" style="left: 97.1312%; animation-duration: 17.2726s; animation-delay: 3.48699s;">/<br>}<br>イ<br>ア<br>{<br>{<br>&lt;<br>*<br>ウ<br>$<br>ス<br>サ<br>ス<br>%<br>ケ<br>&amp;<br>ト<br>ト<br>=<br>:<br>&gt;<br>オ<br>ケ<br>}<br>ウ<br>カ<br>ウ<br>&gt;<br>:<br>キ<br></div><div class="matrix-column" style="left: 16.2439%; animation-duration: 13.2269s; animation-delay: 4.63536s;">&gt;<br>1<br>キ<br>ス<br>/<br>ソ<br>コ<br>&amp;<br>ス<br>カ<br>&amp;<br>%<br>&amp;<br>エ<br>カ<br>ス<br>ト<br>オ<br>&lt;<br>オ<br>&lt;<br>サ<br>ケ<br>;<br>&gt;<br>$<br>セ<br>ア<br>ス<br>0<br></div><div class="matrix-column" style="left: 90.2411%; animation-duration: 14.6687s; animation-delay: 1.67479s;">ケ<br>!<br>ツ<br>#<br>ク<br>!<br>&gt;<br>*<br>コ<br>キ<br>$<br>+<br>テ<br>ト<br>#<br>キ<br>&amp;<br>:<br>=<br>$<br>0<br>\<br>イ<br>{<br>#<br>*<br>=<br>ク<br>カ<br>シ<br></div><div class="matrix-column" style="left: 9.58496%; animation-duration: 19.1526s; animation-delay: 0.391365s;">%<br>シ<br>%<br>ケ<br>=<br>}<br>カ<br>カ<br>;<br>サ<br>$<br>コ<br>+<br>エ<br>&amp;<br>/<br>ウ<br>&gt;<br>[<br>;<br>#<br>ス<br>エ<br>ク<br>タ<br>カ<br>$<br>}<br>:<br>エ<br></div><div class="matrix-column" style="left: 42.6236%; animation-duration: 19.3754s; animation-delay: 1.33693s;">コ<br>[<br>エ<br>キ<br>オ<br>イ<br>/<br>チ<br>\<br>^<br>+<br>カ<br>&gt;<br>!<br>シ<br>イ<br>ス<br>;<br>:<br>&lt;<br>1<br>ア<br>ト<br>&gt;<br>1<br>@<br>+<br>ト<br>テ<br>ケ<br></div><div class="matrix-column" style="left: 32.902%; animation-duration: 18.8049s; animation-delay: 0.0619028s;">タ<br>=<br>}<br>ウ<br>ウ<br>/<br>;<br>%<br>^<br>1<br>テ<br>イ<br>テ<br>!<br>]<br>&gt;<br>1<br>ケ<br>;<br>1<br>1<br>}<br>&lt;<br>+<br>ア<br>]<br>セ<br>*<br>ツ<br>:<br></div><div class="matrix-column" style="left: 94.0613%; animation-duration: 13.3048s; animation-delay: 3.89396s;">ト<br>エ<br>ソ<br>テ<br>タ<br>ウ<br>/<br>&lt;<br>$<br>シ<br>タ<br>ケ<br>[<br>タ<br>0<br>-<br>ツ<br>ソ<br>ク<br>&lt;<br>ウ<br>\<br>\<br>ス<br>&gt;<br>オ<br>\<br>@<br>サ<br>イ<br></div><div class="matrix-column" style="left: 96.5963%; animation-duration: 19.7364s; animation-delay: 1.71877s;">ケ<br>ウ<br>#<br>\<br>/<br>ソ<br>ア<br>サ<br>\<br>サ<br>*<br>ク<br>イ<br>\<br>%<br>イ<br>]<br>]<br>=<br>&lt;<br>ソ<br>チ<br>{<br>ト<br>;<br>#<br>!<br>イ<br>カ<br>/<br></div><div class="matrix-column" style="left: 71.7975%; animation-duration: 12.4475s; animation-delay: 3.85771s;">オ<br>^<br>&gt;<br>}<br>@<br>=<br>\<br>]<br>:<br>%<br>オ<br>エ<br>\<br>\<br>[<br>イ<br>&amp;<br>]<br>0<br>-<br>=<br>ク<br>キ<br>-<br>&gt;<br>$<br>^<br>{<br>]<br>サ<br></div><div class="matrix-column" style="left: 71.0478%; animation-duration: 13.3965s; animation-delay: 0.16582s;">$<br>]<br>#<br>]<br>セ<br>シ<br>=<br>0<br>&gt;<br>セ<br>サ<br>&amp;<br>{<br>タ<br>0<br>+<br>[<br>ソ<br>1<br>$<br>ス<br>0<br>ケ<br>!<br>!<br>タ<br>*<br>&lt;<br>#<br>ウ<br></div><div class="matrix-column" style="left: 66.5348%; animation-duration: 12.3689s; animation-delay: 1.34202s;">[<br>*<br>タ<br>コ<br>$<br>コ<br>*<br>エ<br>ケ<br>[<br>テ<br>@<br>;<br>ソ<br>+<br>ア<br>=<br>ア<br>オ<br>ト<br>{<br>&lt;<br>サ<br>シ<br>!<br>ア<br>ウ<br>ソ<br>-<br>セ<br></div><div class="matrix-column" style="left: 13.5118%; animation-duration: 14.8925s; animation-delay: 1.18599s;">%<br>^<br>^<br>オ<br>イ<br>#<br>オ<br>1<br>/<br>#<br>ケ<br>エ<br>+<br>タ<br>テ<br>オ<br>0<br>ア<br>\<br>エ<br>@<br>ケ<br>;<br>&gt;<br>ソ<br>&amp;<br>シ<br>オ<br>+<br>-<br></div><div class="matrix-column" style="left: 48.2185%; animation-duration: 18.5721s; animation-delay: 3.10869s;">ソ<br>テ<br>コ<br>チ<br>ソ<br>\<br>ソ<br>ク<br>*<br>イ<br>ツ<br>サ<br>&lt;<br>]<br>]<br>ス<br>&lt;<br>=<br>ス<br>ケ<br>キ<br>&gt;<br>ウ<br>\<br>[<br>エ<br>{<br>オ<br>エ<br>=<br></div><div class="matrix-column" style="left: 36.8028%; animation-duration: 12.8241s; animation-delay: 4.26023s;">*<br>+<br>/<br>*<br>ツ<br>-<br>*<br>エ<br>:<br>!<br>^<br>{<br>ソ<br>イ<br>ク<br>!<br>=<br>@<br>&amp;<br>[<br>ケ<br>&gt;<br>#<br>;<br>タ<br>ク<br>&lt;<br>$<br>カ<br>ト<br></div><div class="matrix-column" style="left: 59.7969%; animation-duration: 13.8482s; animation-delay: 4.8787s;">シ<br>;<br>オ<br>ソ<br>{<br>*<br>カ<br>オ<br>カ<br>イ<br>ケ<br>@<br>オ<br>+<br>{<br>$<br>セ<br>}<br>@<br>キ<br>!<br>チ<br>*<br>$<br>ケ<br>}<br>ソ<br>-<br>=<br>シ<br></div><div class="matrix-column" style="left: 89.4372%; animation-duration: 19.4045s; animation-delay: 1.84259s;">&amp;<br>ク<br>$<br>+<br>*<br>コ<br>コ<br>:<br>チ<br>サ<br>&lt;<br>]<br>カ<br>シ<br>キ<br>テ<br>ト<br>セ<br>{<br>ツ<br>/<br>ケ<br>コ<br>ソ<br>オ<br>ア<br>/<br>^<br>イ<br>0<br></div><div class="matrix-column" style="left: 88.5051%; animation-duration: 16.3083s; animation-delay: 0.852619s;">&amp;<br>\<br>0<br>{<br>テ<br>&lt;<br>オ<br>}<br>&amp;<br>カ<br>#<br>サ<br>[<br>+<br>}<br>&gt;<br>ソ<br>0<br>ウ<br>[<br>-<br>ソ<br>ケ<br>*<br>テ<br>=<br>1<br>テ<br>:<br>@<br></div><div class="matrix-column" style="left: 18.7616%; animation-duration: 10.3432s; animation-delay: 0.235722s;">[<br>{<br>/<br>キ<br>ト<br>&amp;<br>エ<br>=<br>]<br>コ<br>セ<br>[<br>}<br>シ<br>ウ<br>{<br>コ<br>オ<br>サ<br>;<br>ウ<br>:<br>/<br>\<br>]<br>&gt;<br>^<br>}<br>ウ<br>[<br></div><div class="matrix-column" style="left: 78.6187%; animation-duration: 11.4013s; animation-delay: 0.0922095s;">\<br>&amp;<br>[<br>ト<br>[<br>{<br>キ<br>&lt;<br>ト<br>;<br>ト<br>^<br>:<br>{<br>0<br>ク<br>テ<br>-<br>#<br>=<br>$<br>ス<br>&lt;<br>{<br>&lt;<br>\<br>エ<br>&gt;<br>テ<br>シ<br></div><div class="matrix-column" style="left: 65.4808%; animation-duration: 16.6064s; animation-delay: 3.63503s;">]<br>キ<br>シ<br>}<br>#<br>チ<br>}<br>0<br>+<br>ス<br>*<br>ケ<br>}<br>エ<br>ク<br>}<br>シ<br>#<br>ウ<br>テ<br>カ<br>タ<br>チ<br>:<br>ツ<br>ア<br>エ<br>$<br>*<br>{<br></div><div class="matrix-column" style="left: 86.0374%; animation-duration: 12.6509s; animation-delay: 1.28884s;">\<br>ア<br>=<br>カ<br>サ<br>サ<br>チ<br>}<br>&amp;<br>&gt;<br>ア<br>オ<br>&lt;<br>/<br>ト<br>%<br>:<br>カ<br>カ<br>ス<br>エ<br>テ<br>+<br>@<br>コ<br>&gt;<br>ス<br>コ<br>ク<br>]<br></div><div class="matrix-column" style="left: 7.0052%; animation-duration: 16.7731s; animation-delay: 4.41318s;">\<br>エ<br>1<br>;<br>エ<br>!<br>キ<br>]<br>-<br>@<br>0<br>セ<br>}<br>セ<br>#<br>*<br>/<br>ト<br>+<br>\<br>ツ<br>^<br>0<br>ツ<br>カ<br>{<br>/<br>&amp;<br>テ<br>テ<br></div><div class="matrix-column" style="left: 1.62659%; animation-duration: 13.6722s; animation-delay: 1.4935s;">*<br>テ<br>=<br>カ<br>&lt;<br>ツ<br>ア<br>*<br>ア<br>[<br>{<br>/<br>チ<br>シ<br>ツ<br>テ<br>^<br>キ<br>^<br>シ<br>ト<br>シ<br>}<br>エ<br>[<br>タ<br>ツ<br>#<br>#<br>$<br></div><div class="matrix-column" style="left: 36.6663%; animation-duration: 12.0331s; animation-delay: 1.11834s;">キ<br>[<br>ソ<br>テ<br>&gt;<br>^<br>サ<br>タ<br>@<br>エ<br>]<br>&gt;<br>エ<br>セ<br>テ<br>!<br>イ<br>}<br>@<br>-<br>キ<br>オ<br>イ<br>ク<br>ア<br>イ<br>;<br>エ<br>{<br>^<br></div><div class="matrix-column" style="left: 21.6799%; animation-duration: 18.9496s; animation-delay: 4.94369s;">タ<br>コ<br>タ<br>イ<br>$<br>エ<br>ケ<br>ク<br>&gt;<br>&lt;<br>セ<br>#<br>ケ<br>!<br>ウ<br>*<br>ア<br>&gt;<br>キ<br>エ<br>-<br>-<br>*<br>シ<br>テ<br>ケ<br>オ<br>イ<br>ケ<br>キ<br></div><div class="matrix-column" style="left: 25.1013%; animation-duration: 16.3537s; animation-delay: 3.18873s;">\<br>#<br>ク<br>]<br>サ<br>チ<br>@<br>[<br>シ<br>$<br>#<br>;<br>チ<br>ウ<br>サ<br>オ<br>ケ<br>1<br>\<br>:<br>!<br>@<br>{<br>ケ<br>[<br>$<br>[<br>カ<br>タ<br>イ<br></div></div>
+
+  <!-- Floating dev particles -->
+  <div class="particle">🚀</div>
+  <div class="particle">⚡</div>
+  <div class="particle">💻</div>
+  <div class="particle">🎉</div>
+  <div class="particle">✨</div>
+
+  <div class="container">
+    <div class="ide-window">
+      <div class="title-bar">
+        <div class="window-btn btn-red"></div>
+        <div class="window-btn btn-yellow"></div>
+        <div class="window-btn btn-green"></div>
+        <span class="file-name">new_year.cpp</span>
+      </div>
+      <div class="code-area">
+        <div class="line">
+          <span class="line-num">1</span>
+          <span class="code"><span class="comment">// 🎊 Time to ship some resolutions!</span></span>
+        </div>
+        <div class="line">
+          <span class="line-num">2</span>
+          <span class="code"><span class="keyword">#include</span> <span class="string">&lt;vector&gt;</span></span>
+        </div>
+        <div class="line">
+          <span class="line-num">3</span>
+          <span class="code"><span class="keyword">#include</span> <span class="string">&lt;string&gt;</span></span>
+        </div>
+        <div class="line">
+          <span class="line-num">4</span>
+          <span class="code"></span>
+        </div>
+        <div class="line">
+          <span class="line-num">5</span>
+          <span class="code"><span class="keyword">int</span> <span class="variable">year</span> <span class="operator">=</span> <span class="number">2026</span><span class="operator">++</span><span class="bracket">;</span></span>
+        </div>
+        <div class="line">
+          <span class="line-num">6</span>
+          <span class="code"></span>
+        </div>
+        <div class="line">
+          <span class="line-num">7</span>
+          <span class="code"><span class="function">std::vector</span><span class="bracket">&lt;</span><span class="function">std::string</span><span class="bracket">&gt;</span> <span class="variable">resolutions</span> <span class="operator">=</span> <span class="bracket">{</span></span>
+        </div>
+        <div class="line">
+          <span class="line-num">8</span>
+          <span class="code">  <span class="string">"Write more tests"</span><span class="bracket">,</span> <span class="comment">// LOL</span></span>
+        </div>
+        <div class="line">
+          <span class="line-num">9</span>
+          <span class="code">  <span class="string">"Stop mass-using auto"</span><span class="bracket">,</span></span>
+        </div>
+        <div class="line">
+          <span class="line-num">10</span>
+          <span class="code">  <span class="string">"Actually read the JUCE docs"</span></span>
+        </div>
+        <div class="line">
+          <span class="line-num">11</span>
+          <span class="code"><span class="bracket">};</span></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="year-display">
+      <div class="year-text">2026</div>
+      <div class="subtitle">std::cout &lt;&lt; "Happy New Year! 🎆" &lt;&lt; std::endl;</div>
+    </div>
+
+    <div class="commit-msg">
+      <div class="commit-hash">feat: bump year to 2026 • just now</div>
+      <div class="commit-text"><span class="emoji">🎉</span> BREAKING CHANGE: deprecated 2025, no segfaults yet</div>
+    </div>
+  </div>
+
+  <script>
+    // Generate matrix rain
+    const matrix = document.getElementById('matrix');
+    const chars = '01アイウエオカキクケコサシスセソタチツテト{}[]<>/\\;:=+-*&^%$#@!';
+    
+    for (let i = 0; i < 30; i++) {
+      const column = document.createElement('div');
+      column.className = 'matrix-column';
+      column.style.left = Math.random() * 100 + '%';
+      column.style.animationDuration = (Math.random() * 10 + 10) + 's';
+      column.style.animationDelay = Math.random() * 5 + 's';
+      
+      let text = '';
+      for (let j = 0; j < 30; j++) {
+        text += chars[Math.floor(Math.random() * chars.length)] + '<br>';
+      }
+      column.innerHTML = text;
+      matrix.appendChild(column);
+    }
+  </script>
+
+
+</body></html>
